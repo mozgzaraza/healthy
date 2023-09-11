@@ -1,0 +1,18 @@
+@font-face {
+  font-family: "Blogger-sans";
+  font-weight: 400;
+  font-style: normal;
+  src: local("Blogger-sans"), url("../fonts/Blogger-sans.woff2") format("woff2"),
+    url("../fonts/Blogger-sans.woff") format("woff");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Montserrat-Regular";
+  font-weight: 400;
+  font-style: normal;
+  src: local("Montserrat-Regular"),
+    url("../fonts/Montserrat-Regular.woff2") format("woff2"),
+    url("../fonts/Montserrat-Regular.woff") format("woff");
+  font-display: swap;
+}

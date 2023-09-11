@@ -1,0 +1,14 @@
+body {
+  font-size: 18px;
+  line-height: 1.5;
+  @extend %blog-400;
+  color: #fff;
+  background-color: $bg;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}

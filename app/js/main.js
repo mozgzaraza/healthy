@@ -28,3 +28,38 @@ modelsItems.forEach(function (modelsItem) {
     tab.addEventListener("click", handleTabClick);
   });
 });
+
+const mainHeight = document.querySelector(".main").offsetHeight;
+const header = document.querySelector(".header");
+window.addEventListener("scroll", function () {
+  let topScroll = window.scrollY;
+  if (topScroll > 50) {
+    header.classList.add("header-fixed");
+  } else {
+    header.classList.remove("header-fixed");
+  }
+});
+
+document.querySelectorAll(".why__item").forEach(function (el) {
+  el.addEventListener("click", function () {
+    let answer = el.children[1];
+
+    if (answer.style.maxHeight) {
+      document.querySelectorAll(".why__answer-list").forEach(function (answer) {
+        answer.style.maxHeight = null;
+      });
+      document.querySelectorAll(".why__item").forEach(function (item) {
+        item.classList.remove("why__item--open");
+      });
+    } else {
+      document.querySelectorAll(".why__answer-list").forEach(function (el) {
+        el.style.maxHeight = null;
+      });
+      document.querySelectorAll(".why__item").forEach(function (item) {
+        item.classList.remove("why__item--open");
+      });
+      el.classList.add("why__item--open");
+      answer.style.maxHeight = answer.scrollHeight + "px";
+    }
+  });
+});

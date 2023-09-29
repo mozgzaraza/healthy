@@ -63,3 +63,16 @@ document.querySelectorAll(".why__item").forEach(function (el) {
     }
   });
 });
+
+let video = document.querySelector(".video__inner");
+
+video.addEventListener("click", function () {
+  if (video.classList.contains("video__inner--play")) {
+    return;
+  }
+  video.classList.add("video__inner--play");
+  video.insertAdjacentHTML(
+    "afterbegin",
+    '<iframe src="https://www.youtube.com/embed/eb_0VP-4YDo?autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>'
+  );
+});

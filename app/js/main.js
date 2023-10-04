@@ -76,3 +76,58 @@ video.addEventListener("click", function () {
     '<iframe src="https://www.youtube.com/embed/eb_0VP-4YDo?autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>'
   );
 });
+
+function barScrollProgress() {
+  let bar = document.querySelector(".steps__bar-progress");
+  let stepsBar = document.querySelector(".steps__bar");
+  let winScroll = window.pageYOffset || document.documentElement.scrollTop;
+  let barTop = stepsBar.getBoundingClientRect().top + winScroll;
+  let barHeight = stepsBar.offsetHeight;
+  let barProgress = ((winScroll - barTop + barHeight - 100) / barHeight) * 100;
+  bar.style.height = barProgress + "%";
+  let stepCheck = document.querySelectorAll(".steps__check");
+
+  if (barProgress > 3) {
+    stepCheck[0].classList.add("steps__check--active");
+  } else {
+    stepCheck[0].classList.remove("steps__check--active");
+  }
+
+  if (barProgress > 23) {
+    stepCheck[1].classList.add("steps__check--active");
+  } else {
+    stepCheck[1].classList.remove("steps__check--active");
+  }
+
+  if (barProgress > 42) {
+    stepCheck[2].classList.add("steps__check--active");
+  } else {
+    stepCheck[2].classList.remove("steps__check--active");
+  }
+
+  if (barProgress > 62) {
+    stepCheck[3].classList.add("steps__check--active");
+  } else {
+    stepCheck[3].classList.remove("steps__check--active");
+  }
+
+  if (barProgress > 82) {
+    stepCheck[4].classList.add("steps__check--active");
+  } else {
+    stepCheck[4].classList.remove("steps__check--active");
+  }
+
+  if (barProgress > 99) {
+    stepCheck[5].classList.add("steps__check--active");
+    document
+      .querySelector(".steps__result")
+      .classList.add("steps__result--active");
+  } else {
+    stepCheck[5].classList.remove("steps__check--active");
+    document
+      .querySelector(".steps__result")
+      .classList.remove("steps__result--active");
+  }
+}
+
+window.addEventListener("scroll", barScrollProgress);

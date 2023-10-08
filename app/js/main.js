@@ -83,47 +83,25 @@ function barScrollProgress() {
   let winScroll = window.pageYOffset || document.documentElement.scrollTop;
   let barTop = stepsBar.getBoundingClientRect().top + winScroll;
   let barHeight = stepsBar.offsetHeight;
-  let barProgress = ((winScroll - barTop + barHeight - 100) / barHeight) * 100;
-  bar.style.height = barProgress + "%";
+  let barProgress = winScroll - barTop + barHeight - 100;
+  bar.style.height = barProgress + "px";
   let stepCheck = document.querySelectorAll(".steps__check");
 
-  if (barProgress > 3) {
-    stepCheck[0].classList.add("steps__check--active");
-  } else {
-    stepCheck[0].classList.remove("steps__check--active");
-  }
+  stepCheck.forEach((step) => {
+    if (barProgress > step.offsetTop) {
+      step.classList.add("steps__check--active");
+    } else {
+      step.classList.remove("steps__check--active");
+    }
+  });
 
-  if (barProgress > 23) {
-    stepCheck[1].classList.add("steps__check--active");
-  } else {
-    stepCheck[1].classList.remove("steps__check--active");
-  }
-
-  if (barProgress > 42) {
-    stepCheck[2].classList.add("steps__check--active");
-  } else {
-    stepCheck[2].classList.remove("steps__check--active");
-  }
-
-  if (barProgress > 62) {
-    stepCheck[3].classList.add("steps__check--active");
-  } else {
-    stepCheck[3].classList.remove("steps__check--active");
-  }
-
-  if (barProgress > 82) {
-    stepCheck[4].classList.add("steps__check--active");
-  } else {
-    stepCheck[4].classList.remove("steps__check--active");
-  }
-
-  if (barProgress > 99) {
-    stepCheck[5].classList.add("steps__check--active");
+  if (
+    stepCheck[stepCheck.length - 1].classList.contains("steps__check--active")
+  ) {
     document
       .querySelector(".steps__result")
       .classList.add("steps__result--active");
   } else {
-    stepCheck[5].classList.remove("steps__check--active");
     document
       .querySelector(".steps__result")
       .classList.remove("steps__result--active");

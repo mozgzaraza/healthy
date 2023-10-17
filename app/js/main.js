@@ -109,3 +109,45 @@ function barScrollProgress() {
 }
 
 window.addEventListener("scroll", barScrollProgress);
+
+const slider = new Swiper(".swiper-container", {
+  loop: true,
+  spaceBetween: 30,
+  slidesPerView: 5,
+  initialSlide: 4,
+  speed: 500,
+
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+});
+
+let lastScrollTop = 0;
+
+function sliderScroll() {
+  let winScroll = window.pageYOffset || document.documentElement.scrollTop;
+  let windowHeight = window.innerHeight;
+  let bottomOfPage = winScroll + windowHeight;
+  let sliderWrapper = document.querySelector(".swiper");
+  let sliderTop = sliderWrapper.getBoundingClientRect().top + winScroll;
+
+  let scrollDirection = winScroll > lastScrollTop ? "down" : "up";
+
+  if (sliderTop < bottomOfPage) {
+    if (scrollDirection === "down") {
+      slider.slideNext();
+    } else {
+      slider.slidePrev();
+    }
+  }
+
+  lastScrollTop = winScroll;
+}
+
+window.addEventListener("scroll", sliderScroll);
+
+lightGallery(document.querySelector(".swiper-wrapper"), {
+  licenseKey: "0000 0000 0000 0000",
+  speed: 500,
+});

@@ -1,6 +1,7 @@
 @import "vars";
 @import "fonts";
 @import "reset";
+@import "libs";
 @import "global";
 
 .header {
@@ -50,7 +51,15 @@
 }
 .main {
   position: relative;
-
+  &:after {
+    z-index: 3;
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+  }
   &__container {
     position: relative;
     z-index: 2;
@@ -449,7 +458,108 @@
     font-size: 18px;
   }
 }
+// .slider {
+//   padding: 50px 0;
+//   position: relative;
+//   z-index: 2;
+//   background-color: $bg;
+//   overflow-x: hidden;
 
+//   &__container {
+//     max-width: 2500px;
+//   }
+//   &__item {
+//     padding: 20px;
+//   }
+
+//   &__img {
+//     height: 10vw;
+//     border-radius: 10px;
+//     width: 100%;
+//     object-fit: cover;
+//     max-height: 350px;
+//   }
+//   .slick-arrow {
+//     position: absolute;
+//     bottom: -40px;
+//     right: 20px;
+//     height: 40px;
+//     width: 40px;
+//     transition: transform 0.3s;
+//     &:hover {
+//       transform: scale(120%);
+//     }
+//     &:active {
+//       transform: scale(90%);
+//     }
+//   }
+//   .slick-prev {
+//     right: 80px;
+//   }
+// }
+
+.swiper {
+  padding: 100px 0;
+  position: relative;
+  z-index: 2;
+  background-color: $bg;
+  overflow-x: hidden;
+
+  .container {
+    max-width: 2500px;
+  }
+
+  &__img {
+    height: 10vw;
+    border-radius: 10px;
+    width: 100%;
+    object-fit: cover;
+    max-height: 350px;
+  }
+  .swiper-arrow {
+    top: auto;
+    bottom: 0;
+    transition: transform 0.3s;
+    &:after {
+      color: #fff;
+    }
+    &:hover {
+      transform: scale(1.2);
+    }
+    &:active {
+      transform: scale(0.8);
+    }
+  }
+  .swiper-button-prev {
+    right: 200px;
+    left: auto;
+  }
+  .swiper-button-next {
+    right: 100px;
+    left: auto;
+  }
+}
+.lg-prev::after,
+.lg-next::before,
+.lg-close::after,
+.lg-download::after {
+  color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.lg-download::after {
+  background-image: url("../images/icons/download.svg");
+}
+.lg-close::after {
+  background-image: url("../images/icons/close.svg");
+}
+.lg-prev::after {
+  background-image: url("../images/icons/arrow-left.svg");
+}
+.lg-next::before {
+  background-image: url("../images/icons/arrow-right.svg");
+}
 .news {
   padding: 50px 0;
   position: relative;

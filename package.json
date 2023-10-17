@@ -19,5 +19,11 @@
     "gulp-uglify": "^3.0.2",
     "jquery": "^3.6.4",
     "sass": "^1.59.3"
+  },
+  "dependencies": {
+    "@fancyapps/ui": "^5.0.24",
+    "lightgallery": "^2.7.2",
+    "slick-carousel": "^1.8.1",
+    "swiper": "^10.3.1"
   }
 }

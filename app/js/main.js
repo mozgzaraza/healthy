@@ -151,3 +151,23 @@ lightGallery(document.querySelector(".swiper-wrapper"), {
   licenseKey: "0000 0000 0000 0000",
   speed: 500,
 });
+
+document.querySelectorAll("a.menu__link").forEach((link) => {
+  link.addEventListener("click", function (e) {
+    e.preventDefault();
+
+    let href = this.getAttribute("href").substring(1);
+
+    const scrollTarget = document.getElementById(href);
+
+    const header = document.querySelector(".header");
+    const topOffset = header.offsetHeight - 50;
+    const elementPosition = scrollTarget.getBoundingClientRect().top;
+    const offsetPosition = elementPosition - topOffset;
+
+    window.scrollBy({
+      top: offsetPosition,
+      behavior: "smooth",
+    });
+  });
+});

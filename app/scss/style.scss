@@ -39,6 +39,56 @@
       margin-right: 30px;
     }
   }
+  &__burger {
+    display: none;
+    position: relative;
+    width: 40px;
+    height: 40px;
+    transition: transform 0.3s, color 0.3s;
+    span {
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      top: 50%;
+      left: 0;
+      display: block;
+      background-color: white;
+      transition: transform 0.3s, opacity 0.3s;
+      &:first-child {
+        top: 20%;
+      }
+      &:last-child {
+        top: 80%;
+      }
+    }
+    &--active {
+      span {
+        opacity: 0;
+
+        &:first-child {
+          top: 50%;
+          opacity: 1;
+          transform: rotate(405deg);
+        }
+        &:last-child {
+          top: 50%;
+          opacity: 1;
+          transform: rotate(-405deg);
+        }
+      }
+    }
+    &:hover {
+      transform: scale(1.2);
+      span {
+        background-color: $accent;
+      }
+    }
+    &:active {
+      transform: scale(0.9);
+    }
+    &:focus {
+    }
+  }
 }
 .contacts {
   &__item {
@@ -64,7 +114,10 @@
   }
   &__link {
     line-height: 1.2;
-    margin: 0 auto 5%;
+    position: absolute;
+    bottom: 10vh;
+    left: 50%;
+    translate: -50%;
     max-width: 150px;
     text-transform: uppercase;
     letter-spacing: 3px;
@@ -75,6 +128,7 @@
     transition: transform 0.3s;
     &:hover {
       transform: scale(1.2);
+      background-color: rgba(49, 192, 190, 0.71);
     }
     &:active {
       transform: scale(0.9);
@@ -117,22 +171,10 @@
     display: flex;
     align-items: center;
     &:hover {
-      &:before {
-        background-color: rgba(0, 0, 0, 0.4);
-      }
       .models__item-tabs {
         transition: opacity 0.5s;
         opacity: 1;
       }
-    }
-    &::before {
-      transition: background-color 0.1s;
-      position: absolute;
-      content: "";
-      left: 0;
-      right: 0;
-      height: 100%;
-      border-radius: 20px;
     }
   }
 
@@ -199,6 +241,7 @@
   }
   &__question {
     padding: 10px 0;
+    color: $default;
   }
   &__answer-list {
     max-height: 0;
@@ -319,6 +362,7 @@
   &__img {
     max-width: 420px;
     width: 100%;
+    border-radius: 20px;
   }
 
   &__bar {
@@ -463,7 +507,7 @@
   position: relative;
   z-index: 2;
   background-color: $bg;
-  overflow-x: hidden;
+  // overflow-x: hidden;
 
   .container {
     max-width: 2500px;
@@ -525,19 +569,19 @@
   position: relative;
   z-index: 2;
   background-color: $bg;
+  overflow-x: hidden;
   &__title {
     margin-bottom: 50px;
   }
   &__list {
     display: flex;
     justify-content: space-evenly;
+    min-width: 0;
   }
   &__item {
-    max-width: 30%;
     background-color: #fff;
     border-radius: 10px;
     color: $default;
-    position: relative;
     &:hover {
       .news__button {
         transform: scale(120%);
@@ -545,17 +589,13 @@
     }
   }
   &__img {
-    height: 180px;
+    height: 200px;
     object-fit: cover;
     border-radius: 10px 10px 0px 0px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
     width: 100%;
   }
   &__item-content {
-    padding: 200px 20px 20px 20px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -565,7 +605,11 @@
     margin-bottom: 10px;
   }
   &__item-text {
-    min-height: 96px;
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    // min-height: 96px;
     font-size: 16px;
     line-height: 1.2;
     margin-bottom: 15px;

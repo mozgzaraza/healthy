@@ -1,0 +1,14 @@
+{
+    "name": "Healthy",
+    "short_name": "Healthy",
+    "icons": [
+        {
+            "src": "/android-chrome-96x96.png",
+            "sizes": "96x96",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#31c0be",
+    "background_color": "#31c0be",
+    "display": "standalone"
+}
